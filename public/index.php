@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             callAPI('PUT', $url . '/' . $_POST['id'], $updated_product);
             $_SESSION['update_message'] = 'Product updated';
 
-            // Omdirigera till samma sida efter uppdatering
+          
             header("Location: index.php");
             exit;
         } elseif ($_POST['action'] === 'delete') {
@@ -81,11 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             callAPI('DELETE', $url . '/' . $_POST['id']);
             $_SESSION['delete_message'] = 'Product deleted';
 
-            // Omdirigera till samma sida efter borttagning
+          
             header("Location: index.php");
             exit;
         }
     }
+    
 }
 
 
@@ -156,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <button type="submit" class="save-button" onclick="saveProduct(this)">Save</button>
 
-                        <button type="button" class="cancel-button" onclick="cancelEdit(event)">Cancel</button>
+                        <button type="button" class="cancel-button">Cancel</button>
 
 
                     </form>

@@ -52,5 +52,11 @@
     "name": "Uranus",
     "price": "5399",
     "description": "The seventh planet from the Sun, unique for its sideways to rotation and faint rings."
+  },
+  {
+    "id": 12,
+    "name": "Apple",
+    "price": "3000",
+    "description": "hello"
   }
 ]

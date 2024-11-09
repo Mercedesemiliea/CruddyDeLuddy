@@ -30,7 +30,7 @@ function saveProduct(button) {
 
 // Funktion för att avbryta redigering
 function cancelEdit(event) {
-    event.preventDefault();
+
     const button = event.target;
     const productItem = button.closest('.product-item');
     const editForm = productItem.querySelector('.edit-form');

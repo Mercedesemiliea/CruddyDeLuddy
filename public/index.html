@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktlista</title>
+    <link rel="stylesheet" href="html.css">
+
+</head>
+<body>
+
+
+    <div class="container_create_products">
+        <h2>Create a new product</h2>
+        <form id="create-product-form">
+          
+            <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Product Name"
+            required
+          />    
+        
+          <input type="number" name="price" id="price" placeholder="Price" required />
+          
+
+          <input
+            type="text"
+            name="description"
+            id="description"
+            placeholder="Description"
+            required
+          />
+          <button type="submit">Create Product</button>
+        </form>
+        <div id="message-container"></div>
+    </div>
+    </div>
+
+
+
+    <div class="product-list-container">
+         <h2> Product List</h2>
+        <div class="product-list-inner">                  
+                <ul id="product-list"></ul>
+       </div>
+     </div>
+     <script src="/js/script.js" defer></script>
+</body>
+ 
+</html>

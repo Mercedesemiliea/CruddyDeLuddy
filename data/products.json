@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Venus",
+    "price": "4500",
+    "description": "The second planet from the Sun, know for its extreme temperatures and thick atmosphere."
+  },
+  {
+    "id": 2,
+    "name": "Mars",
+    "price": "3500",
+    "description": "The fourth planet from the Sun, know as the Red Planet due to its reddish appearance."
+  },
+  {
+    "id": 3,
+    "name": "Saturn",
+    "price": "3200",
+    "description": "The sixth planet from the Sun, famous for its stunning ring system."
+  },
+  {
+    "id": 4,
+    "name": "Pluto",
+    "price": "4700",
+    "description": " Far away from here there is a dwarf planet in the lies on the frozen edge of our Solar System, with a icy surface and eccentric orbit."
+  },
+  {
+    "id": 5,
+    "name": "Mercury",
+    "price": "4000",
+    "description": "The closest planet to the Sun, characterized by its swift orbit and cratered surface."
+  },
+  {
+    "id": 6,
+    "name": "Tellus",
+    "price": "5700",
+    "description": "Our home planet, also known as Earth. Teeming with life and diverse ecosystems, orbiting the Sun in perfect harmony."
+  },
+  {
+    "id": 7,
+    "name": "Jupiter",
+    "price": "5800",
+    "description": "The king of planets, Jupiter is a massive, swirling giant, with a Great Red Spot large enough to swallow Earth and over 75 moons."
+  },
+  {
+    "id": 8,
+    "name": "Neptune",
+    "price": "5600",
+    "description": "A distant blue giant the eight planet from the Sun, Fierce winds and icy storms make it realm of relentless,powerful tempests."
+  },
+  {
+    "id": 11,
+    "name": "Uranus",
+    "price": "5399",
+    "description": "The seventh planet from the Sun, unique for its sideways to rotation and faint rings."
+  }
+]

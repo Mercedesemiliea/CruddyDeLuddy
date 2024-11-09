@@ -1,3 +1,6 @@
+
+// Kod till den statiska sidan som endå inte ville fungera på vercel
+
 document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('product-list');
     const createProductForm = document.getElementById('create-product-form');

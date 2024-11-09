@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             callAPI('PUT', $url . '/' . $_POST['id'], $updated_product);
             $_SESSION['update_message'] = 'Product updated';
 
-          
+
             header("Location: index.php");
             exit;
         } elseif ($_POST['action'] === 'delete') {
@@ -81,12 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             callAPI('DELETE', $url . '/' . $_POST['id']);
             $_SESSION['delete_message'] = 'Product deleted';
 
-          
+
             header("Location: index.php");
             exit;
         }
     }
-    
+
 }
 
 
@@ -128,56 +128,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
             </div>
             <?php foreach ($products as $product): ?>
-
                 <li class="product-item" data-id="<?= htmlspecialchars($product['id']) ?>">
-
                     <span class="product-name"><?= htmlspecialchars($product['name']) ?></span>
                     <input type="text" class="edit-name" value="<?= htmlspecialchars($product['name']) ?>"
                         style="display:none;">
-
                     <span class="product-price"><?= htmlspecialchars($product['price']) ?> kr</span>
                     <input type="text" class="edit-price" value="<?= htmlspecialchars($product['price']) ?>"
                         style="display:none;">
-
                     <span class="product-description"><?= htmlspecialchars($product['description']) ?></span>
                     <input type="text" class="edit-description" value="<?= htmlspecialchars($product['description']) ?>"
                         style="display:none;">
-
-
-
-
                     <!-- Form för att uppdatera produkt -->
                     <form action="index.php" method="post" class="edit-form" style="display:none;">
-
                         <input type="hidden" name="action" value="update">
                         <input type="hidden" name="id" value="<?= $product['id'] ?>">
                         <input type="text" name="name" value="<?= $product['name'] ?>">
                         <input type="number" name="price" value="<?= $product['price'] ?>">
                         <input type="text" name="description" value="<?= $product['description'] ?>">
-
                         <button type="submit" class="save-button" onclick="saveProduct(this)">Save</button>
-
                         <button type="button" class="cancel-button">Cancel</button>
-
-
                     </form>
-
-
                     <button type="button" class="edit-button" onclick="editProduct(this)">Edit</button>
                     <form action="index.php" method="post" style="display: inline;">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="<?= $product['id'] ?>">
                         <button type="submit" class="delete">Delete</button>
-
                     </form>
-
-
                 </li>
             <?php endforeach; ?>
         </ul>
-
-
-
     </div>
     </div>
     <div class="container_create_products">
@@ -187,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="name" id="name" placeholder="Name" required>
             <input type="number" name="price" id="price" placeholder="Price" required>
             <input type="text" name="description" id="description" placeholder="Description">
-           <button type="submit">Create product</button>
+            <button type="submit">Create product</button>
             <?php
             if (isset($_SESSION['create_message'])) {
                 echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['create_message']) . '</div>';
@@ -195,9 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             ?>
         </form>
-        
     </div>
-
 </body>
 
 </html>

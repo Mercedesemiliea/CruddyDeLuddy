@@ -2,7 +2,6 @@
 
 // Funktion för att starta redigering
 function editProduct(button) {
-
     const productItem = button.closest('.product-item');
     const editForm = productItem.querySelector('.edit-form');
     const productName = productItem.querySelector('.product-name');
@@ -30,7 +29,6 @@ function saveProduct(button) {
 
 // Funktion för att avbryta redigering
 function cancelEdit(event) {
-
     const button = event.target;
     const productItem = button.closest('.product-item');
     const editForm = productItem.querySelector('.edit-form');

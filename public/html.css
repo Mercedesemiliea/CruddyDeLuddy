@@ -146,18 +146,16 @@ body {
     display: flex;
     flex-direction: row;
     flex: 3;
-
-
 }
 
 .product-name {
     font-weight: unset;
-    color: #ff82b476;
+
     flex: 3;
 }
 
 .product-price {
-    color: #ff82b476;
+
     margin-top: 0.2rem;
     flex: 3;
 }
@@ -165,64 +163,16 @@ body {
 .product-description {
     flex: 3;
     max-height: 3em;
-
-
     text-overflow: ellipsis;
     white-space: wrap;
-
-
     color: white;
     background: transparent;
 }
 
-.product-item button {
-    padding: 0.3rem;
-    font-size: 0.8rem;
-    color: white;
-    background-color: #ff82b476;
-    border: none;
-    cursor: pointer;
-    font-family: "Montserrat", sans-serif;
-    transition: background-color 0.3s;
-}
 
-.product-item button:hover {
-    background-color: #ff82b44c;
-}
 
-.product-item .edit-form {
-    display: none;
-    flex-direction: column;
 
-    margin-top: 10px;
-}
 
-.product-item .edit-form input {
-    margin: 0.7rem 0.1rem;
-    padding: 0.4rem 1rem;
-
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    font-family: "Montserrat", sans-serif;
-
-}
-
-.product-item .edit-form button {
-    margin-top: 0.5rem;
-    padding: 0.3rem 0.5rem;
-    font-size: 0.8rem;
-    color: white;
-    background-color: #ff82b419;
-    border: none;
-    cursor: pointer;
-    font-family: "Montserrat", sans-serif;
-    transition: background-color 0.3s;
-}
-
-.product-item .edit-form button:hover {
-    background-color: #ff82b4;
-}
 
 #product-list li {
     display: flex;
@@ -258,8 +208,12 @@ body {
 }
 
 
-#product-list li button {
-    margin-left: 0.5rem;
+
+
+.delete,
+.edit {
+
+    margin-left: 0.3rem;
     padding: 0.3rem 0.3rem;
     font-size: 0.8rem;
     color: white;
@@ -285,7 +239,7 @@ body {
 
 #product-list li .edit-form input {
     margin: 0.7rem 0.1rem;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 1.2rem;
     font-size: 1rem;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -295,6 +249,7 @@ body {
 
 #product-list li .edit-form button {
     margin-top: 0.5rem;
+    padding: 0.3rem 0.5rem;
     font-size: 0.8rem;
     color: white;
     background-color: #ff82b419;
@@ -303,8 +258,11 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+
+
+
 #product-list li .edit-form button:hover {
-    background-color: #ff82b4;
+    background-color: #ff82b47c;
 }
 
 

@@ -58,20 +58,18 @@ function displayProducts(products) {
                 <div class="product-info">
                     <strong class="product-name">${product.name}</strong>
                     <span class="product-price">${product.price} kr</span>
-               </div>
-                <p class="product-description">${product.description}</p>
+                    <p class="product-description">${product.description}</p>
+                      </div>     
+                          
                 <button type="button" class="edit" data-id="${product.id}">Edit</button>
                 <button type="button" class="delete" data-id="${product.id}">Delete</button>
-                <form class="edit-form" style="display:none;">
-                    <label for="name">Product name:</label>
-                    <input type="text" name="name" value="${product.name}" placeholder="Namn" required>
-                    <label for="price">Price:</label>
+               
+                <form class="edit-form" style="display:none;">                   
+                    <input type="text" name="name" value="${product.name}" placeholder="Namn" required>                   
                     <input type="number" name="price" value="${product.price}" placeholder="Pris" required>
-                    <label for="description">Description:</label>
                     <input type="text" name="description" value="${product.description}" placeholder="Beskrivning">
                     <button type="button" class="save" data-id="${product.id}">Save</button>
                     <button type="button" class="cancel" data-id="${product.id}">Cancel</button>
-                 
                     </form>
             `;
         productList.appendChild(li);
@@ -109,8 +107,11 @@ function showEditForm(event) {
     const productId = event.target.getAttribute('data-id');
     const productItem = document.querySelector(`.product-item[data-id="${productId}"]`);
     const editForm = productItem.querySelector('.edit-form');
+    const deleteButton = productItem.querySelector('.delete');
 
+    deleteButton.style.display = 'none';
     editForm.style.display = 'block';
+    productItem.querySelector('.product-info').style.display = 'none';
     productItem.querySelector('.edit').style.display = 'none';
 }
 
@@ -121,6 +122,7 @@ function hideEditForm(event) {
     const editForm = productItem.querySelector('.edit-form');
 
     editForm.style.display = 'none';
+    productItem.querySelector('.product-info').style.display = 'block';
     productItem.querySelector('.edit').style.display = 'inline';
 }
 

@@ -306,3 +306,33 @@ body {
 #product-list li .edit-form button:hover {
     background-color: #ff82b4;
 }
+
+
+.export-buttons {
+    position: relative;
+    top: 4%;
+
+    right: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.export-button {
+    align-items: center;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.718);
+    background-color: #ff82b44c;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.export-button:hover {
+    background-color: #ff82b476;
+}

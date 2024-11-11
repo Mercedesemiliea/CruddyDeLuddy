@@ -2,7 +2,7 @@
 
 
 
-const apiUrl = 'https://vercelcrud-qfiify56s-mercedesemilieas-projects.vercel.app/api/products';
+const apiUrl = 'https://vercelcrud-mercedesemiliea-mercedesemilieas-projects.vercel.app/';
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
 

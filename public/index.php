@@ -98,10 +98,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produktlista</title>
+    <title>Crud</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Font Awesome -->
+    <link type="image/png" sizes="16x16" rel="icon" href="icons\icons8-moon-16.png">
     <script src="js/productHandler.js" defer></script>
 </head>
 

@@ -107,9 +107,7 @@ function showEditForm(event) {
     const productId = event.target.getAttribute('data-id');
     const productItem = document.querySelector(`.product-item[data-id="${productId}"]`);
     const editForm = productItem.querySelector('.edit-form');
-    const deleteButton = productItem.querySelector('.delete');
 
-    deleteButton.style.display = 'none';
     editForm.style.display = 'block';
     productItem.querySelector('.product-info').style.display = 'none';
     productItem.querySelector('.edit').style.display = 'none';

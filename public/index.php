@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="number" name="price" value="<?= $product['price'] ?>">
                         <input type="text" name="description" value="<?= $product['description'] ?>">
                         <button type="submit" class="save-button" onclick="saveProduct(this)">Save</button>
-                        <button type="button" class="cancel-button">Cancel</button>
+                        <button type="button" class="cancel-button" onclick="cancelEdit(event)">Cancel</button>
                     </form>
                     <button type="button" class="edit-button" onclick="editProduct(this)">Edit</button>
                     <form action="index.php" method="post" style="display: inline;">

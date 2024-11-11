@@ -14,14 +14,8 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
+    scroll-behavior: smooth;
 }
-
-
-
-
-
-
-
 
 .container_create_products {
     position: absolute;
@@ -29,88 +23,65 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-
+    padding: 25px;
     border-radius: 8px;
-
-    top: 2%;
-    width: 60vw;
-    height: 75vh;
-    background-color: rgba(155, 77, 77, 0.05);
+    top: 0%;
+    width: 85%;
+    height: 60vh;
     font-family: "Montserrat", sans-serif;
     font-size: 0.9rem;
-    padding-bottom: 3%;
+    padding-bottom: 8%;
 }
 
 .container_create_products h2 {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     text-align: center;
-    font-family: "Anton", sans-serif;
-    text-transform: uppercase;
-    color: #ff82b476;
-    font-weight: 100;
+    font-family: "Montserrat", sans-serif;
+    background: -webkit-linear-gradient(45deg, #c97874 10%, #463042 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 300;
     line-height: 10rem;
-    font-size: 3rem;
-
-
+    font-size: 4rem;
+    width: 50vw;
 }
 
-.success-message {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    top: 30px;
-    right: 40px;
-    background-color: rgba(155, 77, 77, 0.05);
+.container_create_products input::placeholder {
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    height: 10%;
-    z-index: 1000;
     font-family: "Montserrat", sans-serif;
 }
 
-.container_create_products label {
-    display: block;
-    text-align: center;
-    margin-bottom: 8px;
-    color: #ff82b476;
-
+.container_create_products input:focus {
+    outline: none;
+    background-color: transparent;
 }
 
 .container_create_products input {
-    align-items: center;
-    text-align: center;
-    padding: 0.8rem;
+    cursor: pointer;
+    display: flex;
     margin-bottom: 1rem;
-    margin-right: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    width: 20vw;
-    background-color: rgba(247, 241, 241, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
     color: #ff82b476;
+    width: 40vw;
+    padding: 0.6rem 0.6rem;
+    line-height: 1rem;
 
 }
 
 .container_create_products button {
     display: flex;
-
     justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    width: 20vw;
     background-color: rgba(230, 136, 227, 0.121);
-    padding: 0.7rem 0.5rem;
-    margin-top: 2%;
-    margin-left: 33%;
-    border-radius: 4px;
     border: none;
     font-size: 0.8rem;
     color: #ff82b476;
     cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    padding: 0.6rem 0.6rem;
 
 }
 
@@ -125,122 +96,213 @@ body {
 
 .product-list-container {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    position: absolute;
     align-items: center;
     text-align: center;
-    top: 35%;
-
+    justify-content: center;
+    padding: 0.7rem 0.9rem;
     color: #ff82b476;
-
-    background-color: rgba(155, 77, 77, 0.05);
+    background-color: rgba(116, 53, 53, 0.05);
     border-radius: 8px;
-    width: 90vw;
-
-    padding-bottom: 5rem;
-
-
+    width: 85%;
     overflow: hidden;
-
+    margin-top: 5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
+
+
+
 
 
 .product-list-container h2 {
-    width: 90%;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     text-align: center;
     justify-content: center;
-    font-family: "Anton", sans-serif;
-    text-transform: uppercase;
-    color: #ff82b476;
-    z-index: 1000;
-    line-height: 10rem;
-    font-size: 4.5rem;
-
-
-}
-
-.product-list-inner {
-    padding: 2%;
-    height: 105vh;
-    width: 90%;
-
-
-
-    /* Bestämd höjd på den inre containern */
-    overflow-y: scroll;
-
-
-}
-
-.product-list-inner::-webkit-scrollbar {
-    width: 12px;
-
-}
-
-.product-list-inner::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-}
-
-.product-list-inner::-webkit-scrollbar-thumb {
-    background: #5c4a72;
-    border-radius: 8px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-}
-
-.product-list-inner::-webkit-scrollbar-thumb:hover {
-    background: #704f88;
+    font-family: "Montserrat", sans-serif;
+    background: -webkit-linear-gradient(45deg, #c97874 10%, #463042 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1rem;
+    font-weight: 300;
+    padding: 3%;
+    font-size: 4.8rem;
+    margin-bottom: 20px;
 }
 
 
+.product-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-
+    gap: 1rem;
+}
 
 .product-info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    width: 20%;
+    flex-direction: row;
+    flex: 3;
+
+
+}
+
+.product-name {
+    font-weight: unset;
+    color: #ff82b476;
+    flex: 3;
 }
 
 .product-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+    color: #ff82b476;
+    margin-top: 0.2rem;
+    flex: 3;
+}
+
+.product-description {
+    flex: 3;
+    max-height: 3em;
+
+
+    text-overflow: ellipsis;
+    white-space: wrap;
+
+
+    color: white;
+    background: transparent;
+}
+
+.product-item button {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #ff82b476;
+    border: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 0.3s;
+}
+
+.product-item button:hover {
+    background-color: #ff82b44c;
+}
+
+.product-item .edit-form {
+    display: none;
+    flex-direction: column;
+
+    margin-top: 10px;
+}
+
+.product-item .edit-form input {
+    margin: 0.7rem 0.1rem;
+    padding: 0.4rem 1rem;
+
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+.product-item .edit-form button {
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #ff82b419;
+    border: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 0.3s;
+}
+
+.product-item .edit-form button:hover {
+    background-color: #ff82b4;
 }
 
 #product-list li {
     display: flex;
-    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
 
+    text-align: left;
+    padding: 0.5rem 0.5rem;
+    width: 75vw;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
-    justify-content: space-between;
-
     color: white;
-
 }
 
 
-#product-list li button.delete {
-    width: 9rem;
-    height: 2.4rem;
 
-    border-radius: 4px;
+#product-list li input,
+#product-list li span,
+#product-list li strong {
+    flex: 1;
+    margin: 0.4rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    max-height: fit-content;
+    text-align: left;
+    align-items: center;
+    color: white;
     border: none;
+    background: transparent;
+    box-sizing: border-box;
+    height: auto;
+    resize: vertical;
+}
+
+
+#product-list li button {
+    margin-left: 0.5rem;
+    padding: 0.3rem 0.3rem;
     font-size: 0.8rem;
     color: white;
+    background-color: #ff82b476;
+    border: none;
     cursor: pointer;
-    background-color: rgba(255, 0, 0, 0.121);
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 0.3s;
+}
+
+#product-list li button:hover {
+    background-color: #ff82b44c;
+}
+
+#product-list li .edit-form {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
 }
 
 
 
-#product-list li button.delete:hover {
-    background-color: #ff82b42a;
+#product-list li .edit-form input {
+    margin: 0.7rem 0.1rem;
+    padding: 0.4rem 1rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+#product-list li .edit-form button {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #ff82b419;
+    border: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+}
+
+#product-list li .edit-form button:hover {
+    background-color: #ff82b4;
 }

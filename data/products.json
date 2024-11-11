@@ -52,11 +52,5 @@
     "name": "Uranus",
     "price": "5399",
     "description": "The seventh planet from the Sun, unique for its sideways to rotation and faint rings."
-  },
-  {
-    "id": 13,
-    "name": "Moons",
-    "price": "5000",
-    "description": "Sweet Moon"
   }
 ]

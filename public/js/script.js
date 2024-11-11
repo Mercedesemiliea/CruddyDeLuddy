@@ -1,114 +1,198 @@
 
-// Kod till den statiska sidan som endå inte ville fungera på vercel
 
+
+
+const apiUrl = 'https://vercelcrud-qfiify56s-mercedesemilieas-projects.vercel.app/api/products';
 document.addEventListener('DOMContentLoaded', () => {
+    fetchProducts();
+
+    // Hantera Create-knappen
+    const createButton = document.getElementById('create-button');
+    if (createButton) {
+        createButton.addEventListener('click', handleCreate);
+    }
+
+    // Event delegation för dynamiskt skapade knappar
+    document.getElementById('product-list').addEventListener('click', (event) => {
+        const target = event.target;
+
+        if (target.classList.contains('delete')) {
+            deleteProduct(event);
+        }
+
+        if (target.classList.contains('edit')) {
+            showEditForm(event);
+        }
+
+        if (target.classList.contains('save')) {
+            saveProduct(event);
+        }
+
+        if (target.classList.contains('cancel')) {
+            hideEditForm(event);
+        }
+    });
+});
+
+// Funktion för att hämta och visa produkter
+async function fetchProducts() {
+    try {
+        const response = await fetch('/api/products');
+        const products = await response.json();
+        displayProducts(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
+}
+
+// Funktion för att visa produkter på sidan
+function displayProducts(products) {
     const productList = document.getElementById('product-list');
-    const createProductForm = document.getElementById('create-product-form');
-    const messageContainer = document.getElementById('message-container');
+    productList.innerHTML = ''; // Rensa listan
 
-    const apiUrl = 'https://vercelcrud-qfiify56s-mercedesemilieas-projects.vercel.app/api/products';
-    // Funktion för att hämta produkter från API:et
-    async function fetchProducts() {
-        try {
-            const response = await fetch('/api/products');
-            const products = await response.json();
-            displayProducts(products);
-        } catch (error) {
-            console.error('Error fetching products:', error);
-        }
-    }
-
-    // Funktion för att visa produkter på sidan
-    function displayProducts(products) {
-        productList.innerHTML = '';
-        products.forEach(product => {
-            const li = document.createElement('li');
-            li.className = 'product-item';
-            li.innerHTML = `
+    products.forEach(product => {
+        const li = document.createElement('li');
+        li.className = 'product-item';
+        li.setAttribute('data-id', product.id);
+        li.innerHTML = `
                 <div class="product-info">
-                    <strong>${product.name}</strong>
+                    <strong class="product-name">${product.name}</strong>
                     <span class="product-price">${product.price} kr</span>
-                </div>
-                <p>${product.description}</p>
-                <button type="submit" class="delete" data-id="${product.id}">Delete</button>
+               </div>
+                <p class="product-description">${product.description}</p>
+                <button type="button" class="edit" data-id="${product.id}">Edit</button>
+                <button type="button" class="delete" data-id="${product.id}">Delete</button>
+                <form class="edit-form" style="display:none;">
+                    <label for="name">Product name:</label>
+                    <input type="text" name="name" value="${product.name}" placeholder="Namn" required>
+                    <label for="price">Price:</label>
+                    <input type="number" name="price" value="${product.price}" placeholder="Pris" required>
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" value="${product.description}" placeholder="Beskrivning">
+                    <button type="button" class="save" data-id="${product.id}">Save</button>
+                    <button type="button" class="cancel" data-id="${product.id}">Cancel</button>
+                 
+                    </form>
             `;
-            productList.appendChild(li);
+        productList.appendChild(li);
+    });
+}
+
+// Funktion för att hantera skapandet av en ny produkt
+async function handleCreate(event) {
+    event.preventDefault();
+    const form = document.getElementById('create-form');
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch('index.php', {
+            method: 'POST',
+            body: formData
         });
+        const data = await response.json();
 
-        const deleteButtons = document.querySelectorAll('.delete');
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', deleteProduct);
+        if (data.success) {
+            fetchProducts(); // Hämta om produkter
+            form.reset();
+            showAlert('Product created successfully!', 'success');
+        } else {
+            showAlert('Failed to create product.', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showAlert('An error occurred.', 'error');
+    }
+}
+
+// Funktion för att visa redigeringsformuläret
+function showEditForm(event) {
+    const productId = event.target.getAttribute('data-id');
+    const productItem = document.querySelector(`.product-item[data-id="${productId}"]`);
+    const editForm = productItem.querySelector('.edit-form');
+
+    editForm.style.display = 'block';
+    productItem.querySelector('.edit').style.display = 'none';
+}
+
+// Funktion för att dölja redigeringsformuläret
+function hideEditForm(event) {
+    const productId = event.target.getAttribute('data-id');
+    const productItem = document.querySelector(`.product-item[data-id="${productId}"]`);
+    const editForm = productItem.querySelector('.edit-form');
+
+    editForm.style.display = 'none';
+    productItem.querySelector('.edit').style.display = 'inline';
+}
+
+// Funktion för att spara ändringar
+async function saveProduct(event) {
+    const productId = event.target.getAttribute('data-id');
+    const productItem = document.querySelector(`.product-item[data-id="${productId}"]`);
+    const editForm = productItem.querySelector('.edit-form');
+    const formData = new FormData(editForm);
+
+    formData.append('action', 'update');
+    formData.append('id', productId);
+
+    try {
+        const response = await fetch('index.php', {
+            method: 'POST',
+            body: formData
         });
-    }
+        const data = await response.json();
 
-    async function deleteProduct(event) {
-        const productId = event.target.getAttribute('data-id');
-
-        try {
-            await fetch(`${apiUrl}/${productId}`, {
-                method: 'DELETE'
-            });
-            fetchProducts(); // Uppdatera produktlistan
-            showSuccessMessage('Product deleted successfully!');
-        } catch (error) {
-            console.error('Error deleting product:', error);
+        if (data.success) {
+            fetchProducts(); // Hämta om produkter
+            showAlert('Product updated successfully!', 'success');
+        } else {
+            showAlert('Failed to update product.', 'error');
         }
+    } catch (error) {
+        console.error('Error:', error);
+        showAlert('An error occurred.', 'error');
     }
+}
 
-    // Funktion för att skapa en ny produkt
-    async function createProduct(event) {
-        event.preventDefault();
-        const formData = new FormData(createProductForm);
-        const newProduct = {
-            name: formData.get('name'),
-            price: formData.get('price'),
-            description: formData.get('description')
-        };
+// Funktion för att radera en produkt
+async function deleteProduct(event) {
+    const productId = event.target.getAttribute('data-id');
+    const formData = new FormData();
+    formData.append('action', 'delete');
+    formData.append('id', productId);
 
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newProduct)
-            });
-            const product = await response.json();
-            fetchProducts(); // Uppdatera produktlistan
-            createProductForm.reset();
-            showSuccessMessage('Product created successfully!');
-        } catch (error) {
-            console.error('Error creating product:', error);
+    try {
+        const response = await fetch('index.php', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            fetchProducts(); // Hämta om produkter
+            showAlert('Product deleted successfully!', 'success');
+        } else {
+            showAlert('Failed to delete product.', 'error');
         }
+    } catch (error) {
+        console.error('Error:', error);
+        showAlert('An error occurred.', 'error');
     }
+}
 
-    // Funktion för att visa ett meddelande
-    function showSuccessMessage(message) {
-        messageContainer.innerHTML = '';
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'success-message';
-        messageDiv.textContent = message;
-        messageContainer.appendChild(messageDiv);
+// Funktion för att visa meddelanden
+function showAlert(message, type) {
+    const messageContainer = document.getElementById('message-container');
+    messageContainer.innerHTML = ''; // Rensa tidigare meddelanden
+
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `alert ${type === 'success' ? 'alert-success' : 'alert-error'}`;
+    messageDiv.textContent = message;
+    messageContainer.appendChild(messageDiv);
+
+    setTimeout(() => {
+        messageDiv.style.opacity = '0';
         setTimeout(() => {
             messageDiv.remove();
-        }, 3000); // Ta bort meddelandet efter 3 sekunder
-    }
-
-
-    function showEditForm(productId) {
-        document.getElementById('edit-form-' + productId).style.display = 'inline';
-        document.querySelector('.edit-button[onclick="showEditForm(' + productId + ')"]').style.display = 'none';
-    }
-
-    function hideEditForm(productId) {
-        document.getElementById('edit-form-' + productId).style.display = 'none';
-        document.querySelector('.edit-button[onclick="showEditForm(' + productId + ')"]').style.display = 'inline';
-    }
-
-
-    // Lägg till event listener för att skapa produktformuläret
-    createProductForm.addEventListener('submit', createProduct);
-
-    // Hämta och visa produkter när sidan laddas
-    fetchProducts();
-});
+        }, 500);
+    }, 3000);
+}

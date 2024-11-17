@@ -46,14 +46,13 @@ $products = callAPI('GET', $url);
 usort($products, function ($a, $b) {
     return $b['id'] - $a['id'];
 });
-// Hantera POST-förfrågningar för att skapa, uppdatera och radera produkter
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
         if ($_POST['action'] === 'create') {
             // Skapa ny produkt
             $new_product = [
-                'id' => uniqid(),
-                'name' => $_POST['name'],
+              'name' => $_POST['name'],
                 'price' => $_POST['price'],
                 'description' => $_POST['description']
             ];

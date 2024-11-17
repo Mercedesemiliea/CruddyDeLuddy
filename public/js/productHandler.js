@@ -1,5 +1,6 @@
 
 
+
 // Funktion för att starta redigering
 function editProduct(button) {
     const productItem = button.closest('.product-item');

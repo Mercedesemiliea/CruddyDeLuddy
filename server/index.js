@@ -5,12 +5,15 @@ const app = express();
 const port = 3000;
 const path = require('path');
 
-// Använd body-parser för att läsa JSON-data från request body
+
 app.use(bodyParser.json());
 
-// Lagra produkter i en JSON-fil
+
 let products = require('../data/products.json');
 
+function saveProducts() {
+    fs.writeFileSync('../data/products.json', JSON.stringify(products, null, 2));
+}
 
 
 // GET: Hämta alla produkter
@@ -21,15 +24,14 @@ app.get('/api/products', (req, res) => {
 // POST: Skapa ny produkt
 app.post('/api/products', (req, res) => {
     const newProduct = req.body;
-    newProduct.id = products.length ? products[products.length - 1].id + 1 : 1;
+    products.sort((a, b) => a.id - b.id);
+    const maxId = products.length ? products[products.length - 1].id : 0;
+    newProduct.id = maxId + 1;
     products.push(newProduct);
     saveProducts();
     res.status(201).json(newProduct);
 });
 
-function saveProducts() {
-    fs.writeFileSync('../data/products.json', JSON.stringify(products, null, 2));
-}
 
 // PUT: Uppdatera en produkt
 app.put('/api/products/:id', (req, res) => {
@@ -45,9 +47,7 @@ app.put('/api/products/:id', (req, res) => {
     }
 });
 
-function saveProducts() {
-    fs.writeFileSync('../data/products.json', JSON.stringify(products, null, 2));
-}
+
 
 
 // DELETE: Radera produkt

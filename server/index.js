@@ -27,6 +27,13 @@ app.post('/api/products', (req, res) => {
     products.sort((a, b) => a.id - b.id);
     const maxId = products.length ? products[products.length - 1].id : 0;
     newProduct.id = maxId + 1;
+
+    // Kontrollera att id är unikt
+    const exists = products.some(product => product.id === newProduct.id);
+    if (exists) {
+        return res.status(500).json({ message: 'Duplicate product ID detected.' });
+    }
+
     products.push(newProduct);
     saveProducts();
     res.status(201).json(newProduct);
